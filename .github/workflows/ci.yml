@@ -73,8 +73,8 @@ jobs:
       fail-fast: false
       matrix:
         docker_image:
-          - huginn/huginn
-          - huginn/huginn-single-process
+          - wrhsd/huginn
+          - wrhsd/huginn-single-process
     env:
       DOCKER_IMAGE: ${{ matrix.docker_image }}
       DOCKERFILE: docker/${{ contains(matrix.docker_image, 'single-process') && 'single-process' || 'multi-process' }}/Dockerfile
