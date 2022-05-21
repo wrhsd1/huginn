@@ -17,7 +17,7 @@ jobs:
           - postgresql
         ruby:
           # - "2.7"
-          - "2.6"
+          - "3.1.2"
     env:
       DATABASE_ADAPTER: ${{ matrix.database_adapter }}
       DATABASE_HOST: '127.0.0.1'
@@ -81,6 +81,12 @@ jobs:
       DOCKER_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
       - name: Build a docker image
         run: |
