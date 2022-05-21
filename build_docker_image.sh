@@ -13,6 +13,6 @@ if [[ "$1" == --push ]]; then
   docker push $DOCKER_IMAGE:$DOCKER_IMAGE_TAG
 fi
 
-if [[ $DOCKER_IMAGE == "huginn/huginn-single-process" ]]; then
+if [[ $DOCKER_IMAGE == "wrhsd/huginn-single-process" ]]; then
   DOCKER_IMAGE=huginn/huginn-test DOCKERFILE=docker/test/Dockerfile ./build_docker_image.sh
 fi
