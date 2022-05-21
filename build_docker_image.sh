@@ -3,7 +3,7 @@ set -ev
 
 : ${DOCKER_IMAGE_TAG:=${GITHUB_SHA:-$(git rev-parse HEAD)}}
 
-bin/docker_wrapper build -t $DOCKER_IMAGE -f $DOCKERFILE .
+docker buildx build --platform linux/amd64,linux/arm64 -t $DOCKER_IMAGE -f $DOCKERFILE .
 
 if [[ "$1" == --push ]]; then
   [[ -n "$DOCKER_USER" && -n "$DOCKER_IMAGE_TAG" ]]
